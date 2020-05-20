@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
-static int borderpx = 2;
+static char *font = "JetBrains Mono:pixelsize=16:antialias=true:autohint=true";
+static int borderpx = 18;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -90,43 +90,12 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-float alpha = 0.8;
+float alpha = 0.94;
 
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-<<<<<<<
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
-
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
-
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"black",
-};
-=======
->>>>>>>
-
   /* 8 normal colors */
-  [0] = "#282828", /* hard contrast: #1d2021 / soft contrast: #32302f */
+  [0] = "#1d2021", /* hard contrast: #1d2021 / soft contrast: #32302f */
   [1] = "#cc241d", /* red     */
   [2] = "#98971a", /* green   */
   [3] = "#d79921", /* yellow  */
@@ -144,21 +113,21 @@ static const char *colorname[] = {
   [13] = "#d3869b", /* magenta */
   [14] = "#8ec07c", /* cyan    */
   [15] = "#ebdbb2", /* white   */
+  [255] = 0,
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#add8e6", /* 256 -> cursor */
+	"#555555", /* 257 -> rev cursor*/
+	"#282828", /* 258 -> bg */
+	"#ebdbb2", /* 259 -> fg */
 };
 
 /*
  * Default colors (colorname index)
  * foreground, background, cursor
  */
-<<<<<<<
-unsigned int defaultfg = 7;
-unsigned int defaultbg = 258;
-static unsigned int defaultcs = 256;
-=======
 unsigned int defaultfg = 15;
 unsigned int defaultbg = 0;
 static unsigned int defaultcs = 15;
->>>>>>>
 static unsigned int defaultrcs = 257;
 
 /*
@@ -168,7 +137,7 @@ static unsigned int defaultrcs = 257;
  * 6: Bar ("|")
  * 7: Snowman ("☃")
  */
-static unsigned int cursorshape = 2;
+static unsigned int cursorshape = 6;
 
 /*
  * Default columns and rows numbers
@@ -230,8 +199,11 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
-	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
-	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i =  1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i =  1} },
+	{ MODKEY,               XK_Home,        zoomreset,      {.f =  0} },
+	{ MODKEY,               XK_k,           zoom,           {.f = +1} },
+	{ MODKEY,               XK_j,           zoom,           {.f = -1} },
 };
 
 /*
