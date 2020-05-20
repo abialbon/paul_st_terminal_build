@@ -1,3 +1,12 @@
+# Paul's build of the ST Terminal
+The following patches were done
+- alpha
+- gruvbox-dark
+- ligature
+- all scrollbacks
+- vertcenter
+
+
 st - simple terminal
 --------------------
 st is a simple terminal emulator for X which sucks less.
